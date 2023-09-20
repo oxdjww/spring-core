@@ -13,7 +13,7 @@ public class MemberServiceTest {
         AppConfig appConfig = new AppConfig();
         memberService = appConfig.memberService();
     }
-//    MemberService memberService = new MemberServiceImpl();
+
     @Test
     void join() {
         // given
