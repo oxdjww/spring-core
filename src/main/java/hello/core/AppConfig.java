@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+// apply spring container
 public class AppConfig {
     @Bean
     public MemberService memberService() {
