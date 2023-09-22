@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+// import static 를 통해 가독성 확보
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -19,8 +20,6 @@ public class ApplicationContextBasicFindTest {
     @DisplayName("빈 이름으로 조회")
     void findBeanByName() {
         MemberService memberService = ac.getBean("memberService", MemberService.class);
-//        System.out.println("memberService = " + memberService);
-//        System.out.println("memberService = " + memberService.getClass());
         assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
 
     }
