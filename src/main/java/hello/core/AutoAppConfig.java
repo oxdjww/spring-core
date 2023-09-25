@@ -7,6 +7,8 @@ import org.springframework.context.annotation.FilterType;
 @Configuration
 // @Component 라는 어노테이션이 붙은 클래스를 다 찾아서 스프링 빈으로 등록해준다.
 @ComponentScan(
+        // basePackage를 지정하지 않으면 파일 상단 dir부터. 즉, hello.core부터~
+        basePackages = "hello.core.member",
         // @Configuation이 붙은 ConfigClass들. 예를들어 AppConfig, TestConfig 등을 빼기 위해서
         excludeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Configuration.class)
 )

@@ -34,5 +34,4 @@ public class AppConfig {
         return new RateDiscountPolicy();
 //        return new FixDiscountPolicy();
     }
-
 }
