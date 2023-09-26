@@ -3,10 +3,12 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor // final이 붙은 매개변수를 가지고 생성자를 만들어주는 lombok annotation
 public class OrderServiceImpl implements OrderService {
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 //    private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
@@ -37,13 +39,12 @@ public class OrderServiceImpl implements OrderService {
 
     // 생성자가 하나일 때는 자동으로 @Autowired가 적용됨
     // 웬만하면 생성자 주입을 이용하자
-//    @Autowired
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        this.memberRepository = memberRepository;
-        this.discountPolicy = discountPolicy;
-//        System.out.println("memberRepository = " + memberRepository);
-//        System.out.println("discountPolicy = " + discountPolicy);
-    }
+//    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+////        System.out.println("memberRepository = " + memberRepository);
+////        System.out.println("discountPolicy = " + discountPolicy);
+//    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
