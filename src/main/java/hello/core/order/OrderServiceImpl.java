@@ -16,13 +16,32 @@ public class OrderServiceImpl implements OrderService {
      * solution : 구현체가 아닌, 추상 인터페이스에만 의존하도록 해야함
      */
 //    private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+
+    // @Autowired private MemberRepository memberRepository;
+    // 필드 주입 : 코드는 간결하지만 외부에서 변경이 불가능해서 안티패턴임
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
+
+    // 변경 가능성 있으면 required=false 옵션을 줄 수 있음
+    @Autowired(required = false)
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("discountPolicy = " + discountPolicy);
+        this.discountPolicy = discountPolicy;
+    }
 
     @Autowired
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("memberRepository = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    // 생성자가 하나일 때는 자동으로 @Autowired가 적용됨
+//    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
+//        System.out.println("memberRepository = " + memberRepository);
+//        System.out.println("discountPolicy = " + discountPolicy);
     }
 
     @Override
@@ -31,6 +50,14 @@ public class OrderServiceImpl implements OrderService {
         int discountPrice = discountPolicy.discount(member, itemPrice);
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+//    // 일반 메서드 주입 (여러 필드를 한 번에 받을 수 있음, 일반적으로 잘 사용하지 않음)
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        System.out.println("OrderServiceImpl.init");
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
 
     // Test용
     public MemberRepository getMemberRepository() {
