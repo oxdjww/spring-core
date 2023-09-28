@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b8f3d356-0c8e-451e-bb90-fa349eb4d269" name="umc-tete-server">
+        <fileTransfer accessType="SFTP" host="43.201.121.70" port="22" sshConfigId="acf0e7b9-7f28-4bc8-9dc7-3a04321c1801" sshConfig="ubuntu@43.201.121.70:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
